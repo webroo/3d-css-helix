@@ -172,7 +172,8 @@ $(function() {
 			// Prepare flat array of image urls
 			var images = [];
 			for (var i = 0; i < data.data.length; i++) {
-				images.push(data.data[i].images.thumbnail.url);
+				// A bug in the api occasionally means the url is returned on the thumbnail property
+				images.push(data.data[i].images.thumbnail.url || data.data[i].images.thumbnail);
 			}
 
 			// Set image on each helix node, wrap if necessary
